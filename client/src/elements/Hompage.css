@@ -1,0 +1,16 @@
+.center{
+    text-align: center;
+}
+.treas-table{
+    max-width: 40%;
+    margin: auto;
+}
+.logo {
+    height: 3vmin;
+    width: 300px;
+    pointer-events: none;
+  }
+.treas-logo{
+    width: 30%;
+    margin: auto;
+}
