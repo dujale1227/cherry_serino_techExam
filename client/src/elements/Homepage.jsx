@@ -22,6 +22,7 @@ function Homepage() {
       axios.post(`/api/treasuresDistance`, values)
       .then((res) => {
         if (res.data.success) {
+          console.log(res)
           setData(res.data.result);
           distSubmitted(true);
         } else {

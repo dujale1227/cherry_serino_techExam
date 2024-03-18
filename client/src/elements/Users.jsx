@@ -9,7 +9,8 @@ function Homepage() {
   useEffect(() => {
     axios.get('/api/users')
       .then((res) => {
-        setData(res.data)
+        console.log(res)
+        setData(res.data.results)
       })
       .catch((err) => console.log(err))
 

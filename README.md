@@ -20,14 +20,15 @@ This guide provides step-by-step instructions on how to run the web application 
     #  npm install
 
 3. Set up the MySQL database:
-   
+
+   - Start the Apache and MySQL module on the XAMPP Control Panel.
    - Create a new MySQL database.
     # serino_db
-   - Import the provided SQL dump file into the newly created database.
-    # serino_db.sql  (found in root folder)
-   - Update the database configuration in the backend code if necessary.
-    # found in 'database/db_config.js'
-   - Start the Apache and MySQL module on the XAMPP Control Panel.
+   - Run Migrations on the root folder.
+    # npx sequelize-cli db:migrate
+   - Run Seeder Script on the root folder.
+    # npx sequelize-cli db:seed:all
+   
 
 The backend server should now be running on a specified port (e.g., 5000).
 

@@ -4,6 +4,7 @@
     const express = require("express");
     const cors = require("cors");
     const path = require("path");
+    // require('./config/database')
     
     //Creating an instance of the Express application, as the backbone of our server
     const app = express();
@@ -22,8 +23,9 @@
         //Routes Imports
         const usersRouter = require('./routes/users.routes')
         const treasuresRouter = require('./routes/treasures.routes')
+        const MoneyRouter = require('./routes/money.routes')
         //API Routes
-        app.use([usersRouter,treasuresRouter])
+        app.use([usersRouter,treasuresRouter,MoneyRouter])
 
 
         app.listen(PORT, () => {
@@ -31,6 +33,6 @@
         });
 
     } catch (e) {
-
+        console.log(`${e}`);
     }
 })();

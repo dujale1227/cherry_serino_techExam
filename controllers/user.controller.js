@@ -1,12 +1,13 @@
-const { db } = require('../database/db_config')
+// const { db } = require('../database/db_config')
+const model = require('../models');
 
-exports.getAllUsers = (req,res)=> {
-    db.query('SELECT * FROM users', (err, results) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({ error: 'Internal server error' });
-        }
-        res.status(200).json(results);
+const Users = model.users;
+
+exports.getAllUsers = async (req, res) => {
+    Users.findAll().then(results => {
+        return res({ success: true, results: results });
+    }).catch((error) => {
+        console.error('Failed to retrieve data : ', error);
+        return res({ success: false, data: error });
     });
 }
-

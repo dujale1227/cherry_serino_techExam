@@ -1,16 +1,17 @@
-const { db } = require('../database/db_config')
+const model  = require('../models');
 
-exports.getAllTreasures = (req, res, next) => {
-    db.query('SELECT * FROM treasures', (err, results) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).json({ error: 'Internal server error' });
-        }
+const Treasure = model.treasures;
+
+exports.getAllTreasures = async (req, res, next) => {
+    Treasure.findAll().then(results => {
         req.body['treasures'] = results;
         next();
+    }).catch((error) => {
+        console.error('Failed to retrieve data : ', error);
+        return res.status(500).json({ error: 'Internal server error' });
     });
-
 }
+
 exports.treasuresDistance = async (req, res, next) => {
     // Validate inputs
     if (!req.body.clat || !req.body.clong || !req.body.dist || !['1', '10'].includes(req.body.dist)||(req.body.prize % 1)) {
@@ -36,7 +37,6 @@ exports.treasuresDistance = async (req, res, next) => {
         Promise.all(mapLoop).then(async () => {
             req.body['treasures'] = distTreasure;
             req.body['treasure_id'] = treasure_id;
-
             if(distTreasure.length > 0){
                 next();
             }else{
