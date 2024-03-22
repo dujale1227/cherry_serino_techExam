@@ -20,7 +20,7 @@ sequelize.authenticate()
         console.log('Connection has been established successfully.',process.env.DB_DATABASE);
     })
     .catch((err) => {
-        onsole.error('Unable to connect to the database:', error)
+        console.error('Unable to connect to the database:', err)
     })
 
 module.exports = sequelize

@@ -14,10 +14,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       latitude: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
       },
       longtitude: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DOUBLE
       },
       createdAt:{
         type: Sequelize.DATE
