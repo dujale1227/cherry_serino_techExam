@@ -18,8 +18,8 @@ This guide provides step-by-step instructions on how to run the web application 
 2. Install dependencies on the backend directory/root folder:
 
     #  npm install
-    
-      Install nysql2 package manually
+
+      Install mysql2 package manually
     # npm install mysql2
 
 3. Set up the MySQL database:
